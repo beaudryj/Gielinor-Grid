@@ -42,7 +42,43 @@ The bot is deployed as a Cloudflare Worker with a D1 database for data storage.
 - [Node.js](https://nodejs.org/) (v16 or higher)
 - [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) (Cloudflare Workers CLI)
 - A Discord bot token and application ID
-- A Cloudflare account with Workers and D1 database access
+- A Cloudflare account with:
+  - Workers (Paid Plan) - Required for D1 Database and Cloudflare Images
+  - D1 Database access
+  - Cloudflare Images access
+
+## Cloudflare Setup
+
+1. Sign up for a [Cloudflare Workers Paid Plan](https://dash.cloudflare.com/?to=/:account/workers/plans)
+   - Required for D1 Database and Cloudflare Images features
+   - Current pricing: $5/month (includes 10M requests, 1GB D1 storage, and Images)
+
+2. Enable Cloudflare Images:
+   - Go to [Cloudflare Dashboard](https://dash.cloudflare.com)
+   - Navigate to Images
+   - Create an API token with Images permissions
+   - Note your Account ID and API Token for the `.dev.vars` file
+
+## Discord Bot Setup
+
+1. Go to the [Discord Developer Portal](https://discord.com/developers/applications)
+2. Click "New Application" and give it a name
+3. Go to the "Bot" tab and click "Add Bot"
+4. Under the "Bot" tab:
+   - Enable "Message Content Intent"
+   - Enable "Server Members Intent"
+   - Enable "Presence Intent"
+   - Copy the bot token (this is your `DISCORD_BOT_TOKEN`)
+5. Go to the "General Information" tab:
+   - Copy the "Application ID" (this is your `DISCORD_APP_ID` and `DISCORD_APPLICATION_ID`)
+   - Copy the "Public Key" (this is your `DISCORD_PUBLIC_KEY`)
+6. Go to the "OAuth2" tab:
+   - Under "URL Generator", select the following scopes:
+     - `bot`
+     - `applications.commands`
+   - Under "Bot Permissions", select:
+     - "Administrator" (or customize as needed)
+   - Copy the generated URL to invite the bot to your server
 
 ## Installation
 
